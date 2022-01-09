@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DatabaseService {
 
-    public static function addEntity( ManagerRegistry $doctrine ){
+    public static function insertEntity( ManagerRegistry $doctrine ){
         $entityManager = $doctrine->getManager();
 
         $product = new Product();
