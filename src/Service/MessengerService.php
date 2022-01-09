@@ -11,10 +11,7 @@ use App\Service\DatabaseService;
 class MessengerService
 {
 
-
-
-    public function connect()
-    {
+    public function getMessage() {
         //Connect as receiver
         $connection = new AMQPStreamConnection('candidatemq.n2g-dev.net', 5672, 'cand_ygga', 'yLzXlNnywVJrpz5G');
         $channel = $connection->channel();
@@ -23,6 +20,7 @@ class MessengerService
         // Callback to be executed when we receive a message.
         $callback = function ($msg) {
             echo ' [x] Received ', $msg->body, "\n";
+            // DatabaseService::insertEntity();
         };
 
         $channel->basic_consume('cand_ygga_results', '', false, true, false, false, $callback);
@@ -35,8 +33,7 @@ class MessengerService
      * @param string $message Message to be sent.
      * @return void
      */
-    public function sendMessage($message)
-    {
+    public function sendMessage($message) {
         // Connect to channel as publisher
         $connection = new AMQPStreamConnection('candidatemq.n2g-dev.net', 5672, 'cand_ygga', 'yLzXlNnywVJrpz5G');
         $channel = $connection->channel();
