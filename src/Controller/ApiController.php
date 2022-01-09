@@ -33,7 +33,7 @@ class ApiController extends AbstractController
     {
         $this->client = $client;
         $this->messengerService = new MessengerService();
-        $this->messengerService->connect();
+        $this->messengerService->getMessage();
     }
 
     /**
@@ -69,9 +69,13 @@ class ApiController extends AbstractController
     }
 
 
-    // Handling huge hexadecimal value transformation
-    // https://www.php.net/manual/en/function.hexdec.php#90309
-
+    /**
+     * Converts hex to decimal. This is used instead of hexdec() because it can handle large numbers that overflow.
+     *
+     * @since 1.0.0
+     * @param string $hex The hexadecimal string.
+     * @return string $dec The hexadecimal converted to decimal.
+     */
     private function bchexdec($hex)
     {
         $dec = 0;
