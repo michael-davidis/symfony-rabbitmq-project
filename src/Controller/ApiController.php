@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Service\MessengerService;
+use App\Service\ProducerService;
 
 
 class ApiController extends AbstractController
@@ -22,26 +22,27 @@ class ApiController extends AbstractController
     private $client;
 
     /**
-     * MessengerService variable
+     * $producerService variable
      *
      * @since 1.0.0
-     * @var MessengerService
+     * @var ProducerService
      */
-    private $messengerService;
+    private $producerService;
 
-    public function __construct(HttpClientInterface $client)
+
+    public function __construct(HttpClientInterface $client, ProducerService $producerService)
     {
         $this->client = $client;
-        $this->messengerService = new MessengerService();
-        $this->messengerService->getMessage();
+        $this->producerService = $producerService;
     }
 
     /**
      * @Route("/")   
      * @Method({"GET"});
      */
-    public function consume()
+    public function sendMessage()
     {
+        // Create routing key
         $response = $this->client->request(
             'GET',
             'https://a831bqiv1d.execute-api.eu-west-1.amazonaws.com/dev/results'
@@ -52,22 +53,21 @@ class ApiController extends AbstractController
 
         $responseAsArray = $response->toArray();
 
+        // Create routing key
         foreach ($params as $key) {
             $routing_key[] = $this->bchexdec($responseAsArray[$key]);
         }
 
-        $message = array();
         $message['routing_key'] =  implode(".", $routing_key);
-        $message['body'] = array( 
+        $message['body'] = array(
             'value' => $responseAsArray['value'],
             'timestamp' => $responseAsArray['timestamp']
         );
 
-        $this->messengerService->sendMessage( $message );
-
-        return new Response( $message['routing_key'] . '<br>' . implode( '|', $message['body'] ) );
+        // Produce Message
+        $this->producerService->publishMessage($message);
+        return new Response('Sent');
     }
-
 
     /**
      * Converts hex to decimal. This is used instead of hexdec() because it can handle large numbers that overflow.
