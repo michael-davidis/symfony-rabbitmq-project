@@ -1,6 +1,6 @@
 # Symfony Project
 
-This project was created using symfony 4 and rabbitmq bundle
+This project was created using Symfony 4, RabbitMQ bundle and Doctrine
 
 ## How To Run
 
