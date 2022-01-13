@@ -1,0 +1,25 @@
+old_sound_rabbit_mq:
+  connections:
+    default:
+      url: "amqp://candidatemq.n2g-dev.net"
+      # host:     'candidatemq.n2g-dev.net'
+      port: 5672
+      user: 'cand_ygga'
+      password: 'yLzXlNnywVJrpz5G'
+      lazy: false
+  producers:
+    messaging:
+      connection: default
+      exchange_options: 
+        name: 'cand_ygga'
+        type: 'direct'
+        passive: true
+      class: App\Rabbit\MessagingProducer
+      
+  consumers:
+    messaging:
+      queue_options:
+        name: 'cand_ygga_results'
+        passive: true
+      connection: default
+      callback: App\Consumer\TaskConsumer

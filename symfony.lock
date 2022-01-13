@@ -103,6 +103,19 @@
     "php-amqplib/php-amqplib": {
         "version": "v3.1.1"
     },
+    "php-amqplib/rabbitmq-bundle": {
+        "version": "2.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.12",
+            "ref": "ce3ca2e4577270c4f518539aa6b9e878998fcfef"
+        },
+        "files": [
+            "./config/packages/old_sound_rabbit_mq.yaml",
+            "./src/Consumer/.gitignore"
+        ]
+    },
     "phpseclib/phpseclib": {
         "version": "3.0.12"
     },
@@ -125,6 +138,18 @@
         },
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "9d254a22efca7264203eea98b866f16f944b2f09"
+        },
+        "files": [
+            "./public/.htaccess"
         ]
     },
     "symfony/cache": {

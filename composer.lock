@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6a3c93228cbceacfcf16700dff52f8d",
+    "content-hash": "a6e02c54aaf4fb23049f43658e524f97",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1867,6 +1867,85 @@
             "time": "2021-12-03T14:55:21+00:00"
         },
         {
+            "name": "php-amqplib/rabbitmq-bundle",
+            "version": "2.10.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-amqplib/RabbitMqBundle.git",
+                "reference": "9829eb064173cae70c1ed40f907c420498f58e18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-amqplib/RabbitMqBundle/zipball/9829eb064173cae70c1ed40f907c420498f58e18",
+                "reference": "9829eb064173cae70c1ed40f907c420498f58e18",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0",
+                "php-amqplib/php-amqplib": "^2.12.2|^3.0",
+                "psr/log": "^1.0",
+                "symfony/config": "^4.3|^5.0",
+                "symfony/console": "^4.3|^5.0",
+                "symfony/dependency-injection": "^4.3|^5.0",
+                "symfony/event-dispatcher": "^4.3|^5.0",
+                "symfony/framework-bundle": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4|^5.0",
+                "symfony/yaml": "^4.3|^5.0"
+            },
+            "replace": {
+                "emag-tech-labs/rabbitmq-bundle": "self.version",
+                "oldsound/rabbitmq-bundle": "self.version"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.11",
+                "phpstan/phpstan-phpunit": "^0.12.6",
+                "phpunit/phpunit": "^7.5|^8.5",
+                "symfony/serializer": "^4.3|^5.0"
+            },
+            "suggest": {
+                "ext-pcntl": "*",
+                "symfony/framework-bundle": "To use this lib as a full Symfony Bundle and to use the profiler data collector"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OldSound\\RabbitMqBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla"
+                }
+            ],
+            "description": "Integrates php-amqplib with Symfony & RabbitMq. Formerly emag-tech-labs/rabbitmq-bundle, oldsound/rabbitmq-bundle.",
+            "keywords": [
+                "AMQP",
+                "message",
+                "queue",
+                "rabbitmq",
+                "symfony",
+                "symfony4",
+                "symfony5"
+            ],
+            "support": {
+                "issues": "https://github.com/php-amqplib/RabbitMqBundle/issues",
+                "source": "https://github.com/php-amqplib/RabbitMqBundle/tree/2.10.2"
+            },
+            "time": "2021-11-11T13:17:34+00:00"
+        },
+        {
             "name": "phpseclib/phpseclib",
             "version": "3.0.12",
             "source": {
@@ -2201,6 +2280,32 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.2.5"
             },
             "time": "2022-01-02T16:55:10+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "shasum": ""
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/apache-pack/issues",
+                "source": "https://github.com/symfony/apache-pack/tree/master"
+            },
+            "time": "2017-12-12T01:46:35+00:00"
         },
         {
             "name": "symfony/cache",
